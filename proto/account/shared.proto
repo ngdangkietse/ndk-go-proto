@@ -1,0 +1,18 @@
+syntax = "proto3";
+package account;
+option go_package = "proto/account";
+
+import "common/shared.proto";
+
+message PUser {
+  int64 id = 1;
+  string full_name = 2;
+  string email = 3;
+}
+
+message PUpsertUserResponse {
+  common.PCode code = 1;
+  string message = 2;
+  optional int64 data = 3;
+  common.PError errors = 4;
+}

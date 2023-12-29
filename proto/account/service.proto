@@ -1,0 +1,11 @@
+syntax = "proto3";
+package account;
+option go_package = "proto/account";
+
+import "account/shared.proto";
+
+service UserService {
+  rpc UpsertUser (PUser) returns (PUpsertUserResponse);
+}
+
+

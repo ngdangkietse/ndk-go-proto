@@ -1,0 +1,17 @@
+syntax = "proto3";
+package common;
+option go_package = "proto/common";
+
+message PError {
+  map<string, string> errors = 1;
+}
+
+enum PCode {
+  SUCCESS = 0;
+
+  NOT_FOUND = -1;
+  INVALID_DATA = -2;
+  ALREADY_EXISTS = -3;
+
+  UNKNOWN_EXCEPTION = -4;
+}
