@@ -15,3 +15,11 @@ enum PCode {
 
   UNKNOWN_EXCEPTION = -4;
 }
+
+message PIdRequest {
+  string id = 1;
+}
+
+message PEmailRequest {
+  string email = 1;
+}
