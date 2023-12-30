@@ -134,3 +134,206 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = PErrorValidationError{}
+
+// Validate checks the field values on PIdRequest with the rules defined in the
+// proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *PIdRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on PIdRequest with the rules defined in
+// the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in PIdRequestMultiError, or
+// nil if none found.
+func (m *PIdRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PIdRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Id
+
+	if len(errors) > 0 {
+		return PIdRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// PIdRequestMultiError is an error wrapping multiple validation errors
+// returned by PIdRequest.ValidateAll() if the designated constraints aren't met.
+type PIdRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PIdRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PIdRequestMultiError) AllErrors() []error { return m }
+
+// PIdRequestValidationError is the validation error returned by
+// PIdRequest.Validate if the designated constraints aren't met.
+type PIdRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PIdRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PIdRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PIdRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PIdRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PIdRequestValidationError) ErrorName() string { return "PIdRequestValidationError" }
+
+// Error satisfies the builtin error interface
+func (e PIdRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPIdRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PIdRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PIdRequestValidationError{}
+
+// Validate checks the field values on PEmailRequest with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *PEmailRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on PEmailRequest with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in PEmailRequestMultiError, or
+// nil if none found.
+func (m *PEmailRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PEmailRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Email
+
+	if len(errors) > 0 {
+		return PEmailRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// PEmailRequestMultiError is an error wrapping multiple validation errors
+// returned by PEmailRequest.ValidateAll() if the designated constraints
+// aren't met.
+type PEmailRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PEmailRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PEmailRequestMultiError) AllErrors() []error { return m }
+
+// PEmailRequestValidationError is the validation error returned by
+// PEmailRequest.Validate if the designated constraints aren't met.
+type PEmailRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PEmailRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PEmailRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PEmailRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PEmailRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PEmailRequestValidationError) ErrorName() string { return "PEmailRequestValidationError" }
+
+// Error satisfies the builtin error interface
+func (e PEmailRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPEmailRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PEmailRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PEmailRequestValidationError{}

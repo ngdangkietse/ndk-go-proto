@@ -8,10 +8,10 @@ package account
 
 import (
 	context "context"
+	common "github.com/ngdangkietse/ndk-go-proto/generated/common"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -30,8 +30,8 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserServiceClient interface {
 	UpsertUser(ctx context.Context, in *PUser, opts ...grpc.CallOption) (*PUpsertUserResponse, error)
-	FindUserById(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*PUser, error)
-	FindUserByEmail(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*PUser, error)
+	FindUserById(ctx context.Context, in *common.PIdRequest, opts ...grpc.CallOption) (*PUser, error)
+	FindUserByEmail(ctx context.Context, in *common.PEmailRequest, opts ...grpc.CallOption) (*PUser, error)
 }
 
 type userServiceClient struct {
@@ -51,7 +51,7 @@ func (c *userServiceClient) UpsertUser(ctx context.Context, in *PUser, opts ...g
 	return out, nil
 }
 
-func (c *userServiceClient) FindUserById(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*PUser, error) {
+func (c *userServiceClient) FindUserById(ctx context.Context, in *common.PIdRequest, opts ...grpc.CallOption) (*PUser, error) {
 	out := new(PUser)
 	err := c.cc.Invoke(ctx, UserService_FindUserById_FullMethodName, in, out, opts...)
 	if err != nil {
@@ -60,7 +60,7 @@ func (c *userServiceClient) FindUserById(ctx context.Context, in *wrapperspb.Str
 	return out, nil
 }
 
-func (c *userServiceClient) FindUserByEmail(ctx context.Context, in *wrapperspb.StringValue, opts ...grpc.CallOption) (*PUser, error) {
+func (c *userServiceClient) FindUserByEmail(ctx context.Context, in *common.PEmailRequest, opts ...grpc.CallOption) (*PUser, error) {
 	out := new(PUser)
 	err := c.cc.Invoke(ctx, UserService_FindUserByEmail_FullMethodName, in, out, opts...)
 	if err != nil {
@@ -74,8 +74,8 @@ func (c *userServiceClient) FindUserByEmail(ctx context.Context, in *wrapperspb.
 // for forward compatibility
 type UserServiceServer interface {
 	UpsertUser(context.Context, *PUser) (*PUpsertUserResponse, error)
-	FindUserById(context.Context, *wrapperspb.StringValue) (*PUser, error)
-	FindUserByEmail(context.Context, *wrapperspb.StringValue) (*PUser, error)
+	FindUserById(context.Context, *common.PIdRequest) (*PUser, error)
+	FindUserByEmail(context.Context, *common.PEmailRequest) (*PUser, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -86,10 +86,10 @@ type UnimplementedUserServiceServer struct {
 func (UnimplementedUserServiceServer) UpsertUser(context.Context, *PUser) (*PUpsertUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpsertUser not implemented")
 }
-func (UnimplementedUserServiceServer) FindUserById(context.Context, *wrapperspb.StringValue) (*PUser, error) {
+func (UnimplementedUserServiceServer) FindUserById(context.Context, *common.PIdRequest) (*PUser, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindUserById not implemented")
 }
-func (UnimplementedUserServiceServer) FindUserByEmail(context.Context, *wrapperspb.StringValue) (*PUser, error) {
+func (UnimplementedUserServiceServer) FindUserByEmail(context.Context, *common.PEmailRequest) (*PUser, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindUserByEmail not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
@@ -124,7 +124,7 @@ func _UserService_UpsertUser_Handler(srv interface{}, ctx context.Context, dec f
 }
 
 func _UserService_FindUserById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.StringValue)
+	in := new(common.PIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -136,13 +136,13 @@ func _UserService_FindUserById_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: UserService_FindUserById_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).FindUserById(ctx, req.(*wrapperspb.StringValue))
+		return srv.(UserServiceServer).FindUserById(ctx, req.(*common.PIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _UserService_FindUserByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(wrapperspb.StringValue)
+	in := new(common.PEmailRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -154,7 +154,7 @@ func _UserService_FindUserByEmail_Handler(srv interface{}, ctx context.Context, 
 		FullMethod: UserService_FindUserByEmail_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).FindUserByEmail(ctx, req.(*wrapperspb.StringValue))
+		return srv.(UserServiceServer).FindUserByEmail(ctx, req.(*common.PEmailRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
