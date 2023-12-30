@@ -35,6 +35,21 @@
         }
       }
     },
+    "accountPUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
     "commonPCode": {
       "type": "integer",
       "format": "int32",

@@ -3,9 +3,12 @@ package account;
 option go_package = "proto/account";
 
 import "account/shared.proto";
+import "google/protobuf/wrappers.proto";
 
 service UserService {
   rpc UpsertUser (PUser) returns (PUpsertUserResponse);
+  rpc FindUserById (google.protobuf.StringValue) returns (PUser);
+  rpc FindUserByEmail (google.protobuf.StringValue) returns (PUser);
 }
 
 
