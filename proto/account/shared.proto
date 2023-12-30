@@ -5,7 +5,7 @@ option go_package = "proto/account";
 import "common/shared.proto";
 
 message PUser {
-  int64 id = 1;
+  string id = 1;
   string full_name = 2;
   string email = 3;
 }
