@@ -16,3 +16,10 @@ message PUpsertUserResponse {
   optional int64 data = 3;
   common.PError errors = 4;
 }
+
+message PGetUserResponse {
+  common.PCode code = 1;
+  string message = 2;
+  PUser data = 3;
+  common.PError errors = 5;
+}

@@ -17,6 +17,23 @@
   ],
   "paths": {},
   "definitions": {
+    "accountPGetUserResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/commonPCode"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/accountPUser"
+        },
+        "errors": {
+          "$ref": "#/definitions/commonPError"
+        }
+      }
+    },
     "accountPUpsertUserResponse": {
       "type": "object",
       "properties": {
